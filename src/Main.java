@@ -48,5 +48,13 @@ public class Main {
         for (Map.Entry<String, List<Funcionario>> agrupamento : agrupamentoFuncao.entrySet()) {
             System.out.println(agrupamento);
         }
+
+        System.out.println();
+        System.out.println("Funcionários que fazem aniversário no mês 10 e 12");
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getDataNascimento().getMonthValue() == 10 || funcionario.getDataNascimento().getMonthValue() == 12) {
+                System.out.println(funcionario);
+            }
+        }
     }
 }
