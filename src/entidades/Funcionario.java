@@ -1,6 +1,7 @@
 package entidades;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 import static utils.Conversor.formatoData;
@@ -31,6 +32,10 @@ public class Funcionario extends Pessoa {
 
     public void setFuncao(String funcao) {
         this.funcao = funcao;
+    }
+
+    public void aumentoSalario(BigDecimal porcentagem) {
+        this.salario = this.salario.multiply(BigDecimal.ONE.add(porcentagem.divide(BigDecimal.valueOf(100L), 2, RoundingMode.HALF_UP)));
     }
 
     @Override
