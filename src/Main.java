@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
+import static utils.Conversor.formatoMoeda;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -75,5 +77,13 @@ public class Main {
         for (Funcionario funcionario : funcionarios) {
             System.out.println(funcionario);
         }
+
+        System.out.println();
+        System.out.println("Total de salários:");
+        BigDecimal total = BigDecimal.ZERO;
+        for (Funcionario funcionario : funcionarios) {
+            total = total.add(funcionario.getSalario());
+        }
+        System.out.println(formatoMoeda(total));
     }
 }
