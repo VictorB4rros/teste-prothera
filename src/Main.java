@@ -2,6 +2,7 @@ import entidades.Funcionario;
 import entidades.Pessoa;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
@@ -23,7 +24,13 @@ public class Main {
         funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, 5, 24), BigDecimal.valueOf(1606.85), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), BigDecimal.valueOf(2799.93), "Gerente"));
 
-        funcionarios.remove(1);
+        System.out.println();
+        System.out.println("Funcionários inseridos:");
+        for (Funcionario funcionario : funcionarios) {
+            System.out.println(funcionario);
+        }
+
+        funcionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
 
         System.out.println();
         System.out.println("Funcionário João removido:");
@@ -51,7 +58,7 @@ public class Main {
         }
 
         System.out.println();
-        System.out.println("Funcionários que fazem aniversário no mês 10 e 12");
+        System.out.println("Funcionários que fazem aniversário no mês 10 e 12:");
         for (Funcionario funcionario : funcionarios) {
             if (funcionario.getDataNascimento().getMonthValue() == 10 || funcionario.getDataNascimento().getMonthValue() == 12) {
                 System.out.println(funcionario);
@@ -85,5 +92,12 @@ public class Main {
             total = total.add(funcionario.getSalario());
         }
         System.out.println(formatoMoeda(total));
+
+        System.out.println();
+        System.out.println("Quantos salários mínimos ganha cada funcionário:");
+        for (Funcionario funcionario : funcionarios) {
+            BigDecimal quantidadeSalariosMinimos = funcionario.getSalario().divide(BigDecimal.valueOf(1212L), 2, RoundingMode.HALF_EVEN);
+            System.out.println(funcionario.getNome() + ": " + quantidadeSalariosMinimos);
+        }
     }
 }
