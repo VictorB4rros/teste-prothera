@@ -2,6 +2,7 @@ import entidades.Funcionario;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -56,5 +57,17 @@ public class Main {
                 System.out.println(funcionario);
             }
         }
+
+        System.out.println();
+        System.out.println("Funcionário com a maior idade:");
+        LocalDate nascimentoMaisLonginquo = LocalDate.now();
+        Funcionario funcionarioComMaiorIdade = new Funcionario();
+        for (Funcionario funcionario : funcionarios) {
+            if (funcionario.getDataNascimento().isBefore(nascimentoMaisLonginquo)) {
+                nascimentoMaisLonginquo = funcionario.getDataNascimento();
+                funcionarioComMaiorIdade = funcionario;
+            }
+        }
+        System.out.println(funcionarioComMaiorIdade);
     }
 }
