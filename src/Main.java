@@ -1,12 +1,10 @@
 import entidades.Funcionario;
+import entidades.Pessoa;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -68,6 +66,14 @@ public class Main {
                 funcionarioComMaiorIdade = funcionario;
             }
         }
-        System.out.println(funcionarioComMaiorIdade);
+        Period idade = Period.between(funcionarioComMaiorIdade.getDataNascimento(), LocalDate.now());
+        System.out.println("Nome: " + funcionarioComMaiorIdade.getNome() + ", " + "idade: " + idade.getYears());
+
+        System.out.println();
+        System.out.println("Funcionários por ordem alfabética:");
+        funcionarios.sort(Comparator.comparing(Pessoa::getNome));
+        for (Funcionario funcionario : funcionarios) {
+            System.out.println(funcionario);
+        }
     }
 }
