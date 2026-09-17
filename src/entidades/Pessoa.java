@@ -3,6 +3,8 @@ package entidades;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import static utils.Conversor.formatoData;
+
 public class Pessoa {
 
     private String nome;
@@ -42,9 +44,9 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" +
-                "nome='" + nome + '\'' +
-                ", dataNascimento=" + dataNascimento +
+        return "Pessoa {" +
+                "Nome = '" + nome + '\'' +
+                ", Data de nascimento = " + formatoData(dataNascimento) +
                 '}';
     }
 }
